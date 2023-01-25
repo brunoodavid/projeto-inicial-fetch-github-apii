@@ -27,13 +27,13 @@ const screen = {
         //user.events.forEach(events => eventsItens += `<li>${events.repo.name} - ${events.payload.commits[0].message}</li><br>`)
         user.events.forEach((event) => {
             if(event.payload.commits){
-                eventsItens += `<li>${event.repo.name} - ${event.payload.commits[0].message} </li><br>`
+                eventsItens += `<li><a href=https://github.com/${event.repo.name} target="_blank>${event.repo.name}</a> - ${event.payload.commits[0].message} </li><br>`
             }
         })
 
 
         if(user.events.length> 0){
-            this.userProfile.innerHTML += `<div class="repositories section">
+            this.userProfile.innerHTML += `<div class="">
                                                 <h2>Eventos</h2>
                                                 <ul>${eventsItens}</ul>
                                         </div>`
