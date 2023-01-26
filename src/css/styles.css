@@ -148,6 +148,41 @@ main {
   color: #fff
 }
 
+.container .profile-data .events h2{
+  margin-bottom: 20px;
+}
+
+.container .profile-data .events a{
+  font-weight: bold;
+}
+
+.container .profile-data .repoItens{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container .profile-data .repositories-itens{
+  width: 300px;
+  border: 2px solid #ccc;
+  margin: 20px;
+}
+
+
+.container .profile-data .repositories-itens h3{
+  font-weight: bold;
+}
+
+.container .profile-data .repositories-itens ul{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container .profile-data .repositories-itens ul li{
+  margin-right: 10px;
+}
+
 .container .profile-data.hide{
   display: none;
 }

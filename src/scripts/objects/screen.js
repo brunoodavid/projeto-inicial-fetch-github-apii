@@ -10,8 +10,12 @@ const screen = {
                                 <p>${user.followers}</p>
                                 <h2>Seguindo: </h2>
                                 <p>${user.following}</p>
+                                
                             </div>
                         </div>`
+        
+        
+
 
         let repositoriesItens = ''
         user.repositories.forEach(repo => repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`)   
@@ -24,7 +28,6 @@ const screen = {
         }
 
         let eventsItens = ''
-        //user.events.forEach(events => eventsItens += `<li>${events.repo.name} - ${events.payload.commits[0].message}</li><br>`)
         user.events.forEach((event) => {
             if(event.payload.commits){
                 eventsItens += `<li><a href=https://github.com/${event.repo.name} target="_blank>${event.repo.name}</a> - ${event.payload.commits[0].message} </li><br>`
@@ -32,12 +35,28 @@ const screen = {
         })
 
 
-        if(user.events.length> 0){
-            this.userProfile.innerHTML += `<div class="">
+        if(user.events.length > 0){
+            this.userProfile.innerHTML += `<div class="events">
                                                 <h2>Eventos</h2>
                                                 <ul>${eventsItens}</ul>
                                         </div>`
         }
+
+        let repositoriesForksStarsWatchersLanguage = ''
+        user.repositories.forEach(repo => repositoriesForksStarsWatchersLanguage += `
+                                                                    <div class="repositories-itens"> 
+                                                                        <h3>${repo.name}</h3>
+                                                                        <ul>
+                                                                            <li>🍴 ${repo.forks}</li>
+                                                                            <li>⭐ ${repo.stargazers_count}</li>
+                                                                            <li>👀 ${repo.watchers}</li>
+                                                                            <li>👨‍💻 ${repo.language}</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                `)
+        this.userProfile.innerHTML += `<div class="repoItens">
+                                            ${repositoriesForksStarsWatchersLanguage}
+                                       </div>`
 
     },
     renderNotFound(){
@@ -45,4 +64,4 @@ const screen = {
     }
 }
 
-export { screen}
+export { screen }
