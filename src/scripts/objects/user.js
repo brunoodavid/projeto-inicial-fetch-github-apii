@@ -4,8 +4,8 @@ const user = {
     bio: '',
     userName: '',
     repositories: [],
-    followers: '',
-    following: '',
+    followers: 0,
+    following: 0,
     events: [],
     forks: '',
     stars: '',
@@ -18,10 +18,6 @@ const user = {
         this.userName = gitHubUser.login
         this.followers = gitHubUser.followers
         this.following = gitHubUser.following
-        this.forks = gitHubUser.forks
-        this.stars = gitHubUser.stars
-        this.watchers = gitHubUser.watchers
-        this.language = gitHubUser.language
     },
     setRepositories(repositories){
         this.repositories = repositories

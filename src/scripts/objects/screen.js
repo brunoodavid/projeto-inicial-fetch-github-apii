@@ -18,7 +18,17 @@ const screen = {
 
 
         let repositoriesItens = ''
-        user.repositories.forEach(repo => repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`)   
+        user.repositories.forEach(repo => repositoriesItens += `<div><li><a href="${repo.html_url}" target="_blank"> ${repo.name}</a></li></div>
+                                                                
+                                                                <div class="repositories-itens"> 
+                                                                    <h3>${repo.name}</h3>
+                                                                    <ul>
+                                                                        <li>🍴 ${repo.forks}</li>
+                                                                        <li>⭐ ${repo.stargazers_count}</li>
+                                                                        <li>👀 ${repo.watchers}</li>
+                                                                        <li>👨‍💻 ${repo.language}</li>
+                                                                    </ul>
+                                                                </div>`)   
 
         if(user.repositories.length > 0){
             this.userProfile.innerHTML += `<div class="repositories section">
@@ -30,7 +40,9 @@ const screen = {
         let eventsItens = ''
         user.events.forEach((event) => {
             if(event.payload.commits){
+                console.log(event)
                 eventsItens += `<li><a href=https://github.com/${event.repo.name} target="_blank>${event.repo.name}</a> - ${event.payload.commits[0].message} </li><br>`
+                
             }
         })
 
@@ -41,22 +53,6 @@ const screen = {
                                                 <ul>${eventsItens}</ul>
                                         </div>`
         }
-
-        let repositoriesForksStarsWatchersLanguage = ''
-        user.repositories.forEach(repo => repositoriesForksStarsWatchersLanguage += `
-                                                                    <div class="repositories-itens"> 
-                                                                        <h3>${repo.name}</h3>
-                                                                        <ul>
-                                                                            <li>🍴 ${repo.forks}</li>
-                                                                            <li>⭐ ${repo.stargazers_count}</li>
-                                                                            <li>👀 ${repo.watchers}</li>
-                                                                            <li>👨‍💻 ${repo.language}</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                `)
-        this.userProfile.innerHTML += `<div class="repoItens">
-                                            ${repositoriesForksStarsWatchersLanguage}
-                                       </div>`
 
     },
     renderNotFound(){
